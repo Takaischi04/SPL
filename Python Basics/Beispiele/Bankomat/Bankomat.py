@@ -1,18 +1,41 @@
-print("1. Einzahlen")
-print("2. Abheben")
-print("3. Kontostand")
-print("4. Beenden")
-userInput = input("Was möchten sie machen: ")
+balance = 0
 
-balance = 0;
+while True:
+    print("1. Einzahlen")
+    print("2. Abheben")
+    print("3. Kontostand")
+    print("4. Beenden")
+    userInput = int(input("Was möchten sie machen: "))
 
-def AddToBalance(balance, amountToAdd):
-    balance = balance + amountToAdd
-    print(amountToAdd," wurde eingezahlt")
+    def AddToBalance(amountToAdd):
+        global balance
+        balance = balance + amountToAdd
+        print("-")
+        print(amountToAdd," wurde eingezahlt")
+        print("-")
 
-if userInput == 1:
-    amountToAdd = input("Wieviel soll eingezahlt werden: ")
-    AddToBalance(amountToAdd)
+    def removeFromBalance(amountToRemove):
+        global balance
+        balance = balance - amountToRemove
+        print("-")
+        print(amountToRemove," wurde abgehoben")            
+        print("-")
 
-elif userInput == 2:
-    amountToRemoce = input("Wieviel soll abgehoben werden: ")
+    if userInput == 1:
+        amountToAdd = int(input("Wieviel soll eingezahlt werden: "))
+        AddToBalance(amountToAdd)
+
+    elif userInput == 2:
+        amountToRemove = int(input("Wieviel soll abgehoben werden: "))
+        removeFromBalance(amountToRemove)
+
+    elif userInput == 3:
+        print("-")
+        print("Kontostand: ", balance)
+        print("-")
+
+    elif userInput == 4:
+        print("-")
+        print("shutting down")
+        print("-")
+        break
